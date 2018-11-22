@@ -6,7 +6,7 @@ const gotoPreviousMonth = (dispatch, month) => dispatch(previousMonth(month));
 
 let PreviousMonthButton = ({month, dispatch}) => {
 	return (
-		<button className="next" onClick={() => gotoPreviousMonth(dispatch, month)}>&lt;</button>
+		<span className="previous" onClick={() => gotoPreviousMonth(dispatch, month)}>&lt;</span>
 	);
 };
 export default connect()(PreviousMonthButton);

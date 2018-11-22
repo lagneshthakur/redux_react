@@ -6,7 +6,7 @@ const gotoNextMonth = (dispatch, month) => dispatch(nextMonth(month));
 
 let NextMonthButton = ({month, dispatch}) => {
 	return (
-		<button className="next" onClick={() => gotoNextMonth(dispatch, month)}>&gt;</button>
+		<span className="next" onClick={() => gotoNextMonth(dispatch, month)}>&gt;</span>
 	);
 };
 export default connect()(NextMonthButton);

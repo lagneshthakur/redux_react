@@ -12,13 +12,6 @@ class App extends Component {
     const {calendarData} = this.props;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <div>
-            <h1>Hello world, this is a Redux tutorial!</h1>
-            <p>Here is our property: {this.props.examplePropOne}</p>
-          </div>
-        </header>
         <Calendar calendarData={calendarData} />
       </div>
 

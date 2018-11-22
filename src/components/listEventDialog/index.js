@@ -16,7 +16,7 @@ let ListEvent = ({selectedDay, events, dispatch}) => {
 				<table className="eventListTable">
 					<thead>
 						<tr>
-							<th className="eventTableTH">Name</th>
+							<th className="eventTableTH">Events</th>
 						</tr>
 					</thead>
 					<tbody>
