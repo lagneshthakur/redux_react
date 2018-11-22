@@ -42,3 +42,10 @@ export const toggleEventList = (selectedDay) => {
       selectedDay
     }
   };
+
+export const removeEvent = (eventIndex) => {
+    return {
+      type: 'REMOVE_EVENT',
+      eventIndex
+    }
+};

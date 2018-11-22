@@ -1,12 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import uuid from 'node-uuid';
-import {toggleEventList} from '../../actions';
+import {removeEvent, toggleEventList} from '../../actions';
 
 
 const openEventList = (event, dispatch) => {
 	event.preventDefault(event);
 	dispatch(toggleEventList());
+};
+
+const removeEventItem = (index, dispatch) => {
+	dispatch(removeEvent(index));
+	dispatch(toggleEventList());
+	setTimeout(() => {
+		dispatch(toggleEventList());
+	},0)
 };
 
 let ListEvent = ({selectedDay, events, dispatch}) => {
@@ -17,6 +25,7 @@ let ListEvent = ({selectedDay, events, dispatch}) => {
 					<thead>
 						<tr>
 							<th className="eventTableTH">Events</th>
+							<th className="eventTableTH"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -24,6 +33,11 @@ let ListEvent = ({selectedDay, events, dispatch}) => {
 							return (
 								<tr key={uuid.v4()}>
 									<td className="eventTableTD">{item.eventName}</td>
+									<td className="eventTableTD">
+										<button onClick={() => removeEventItem(index, dispatch)}>
+											<span>x</span>
+										</button>
+									</td>
 								</tr>
 							)
 						})}

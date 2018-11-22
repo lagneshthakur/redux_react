@@ -15,7 +15,7 @@ const initialState = {
 };
 
 const reducers = (state = initialState, action) => {
-	let eventKey = null;
+	let eventKey = null, eventIndex = null;
 	let newState = null;
 	switch(action.type) {
 
@@ -56,13 +56,19 @@ const reducers = (state = initialState, action) => {
 			return newState;
 		case 'UPDATE_EVENT_NAME':
 			eventKey = state.selectedDay.format('DD-MM-YYYY');
-			const eventIndex = action.eventIndex;
+			eventIndex = action.eventIndex;
 			newState = { ...state};
 			if(!newState.events[eventKey][eventIndex]) newState.events[eventKey][eventIndex] = {};
 			newState.events[eventKey][eventIndex].eventName = action.name;
 			return { ...state, events: newState.events};
 		case 'TOGGLE_EVENT_LIST':
 			return { ...state, eventListIsOpen: !state.eventListIsOpen};
+		case 'REMOVE_EVENT':
+			eventKey = state.selectedDay.format('DD-MM-YYYY');
+			eventIndex = action.eventIndex;
+			let newState = { ...state};
+			if(eventIndex !== -1) newState.events[eventKey].splice(eventIndex, 1);
+			return { ...state, events: newState.events};
 		default:
 			return state;
 	}
